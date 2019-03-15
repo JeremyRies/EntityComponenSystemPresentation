@@ -204,6 +204,8 @@ GameObject:
   - component: {fileID: 857379584}
   - component: {fileID: 857379583}
   - component: {fileID: 857379585}
+  - component: {fileID: 857379586}
+  - component: {fileID: 857379587}
   m_Layer: 0
   m_Name: Systems
   m_TagString: Untagged
@@ -246,6 +248,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78361f2b560a4bd2a3ce5b3a0d4e594c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &857379586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 857379582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 666b314494ec43a0b991e883537d1a69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &857379587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 857379582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81558ebcaeb54909a9d6ad77a1c10134, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1762303733
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,6 +281,7 @@ GameObject:
   - component: {fileID: 1762303736}
   - component: {fileID: 1762303734}
   - component: {fileID: 1762303735}
+  - component: {fileID: 1762303738}
   m_Layer: 0
   m_Name: MovingObject
   m_TagString: Untagged
@@ -287,8 +312,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dde44f93655b5b488fd4bd77c9b8f16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 2
-  Direction: {x: 0, y: 1}
+  Speed: 1
+  Direction: {x: 0, y: 0}
 --- !u!212 &1762303736
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -346,3 +371,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1762303738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1762303733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6497282e140d4b43972fce5b34ec2792, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  XInput: 0
+  YInput: 0
