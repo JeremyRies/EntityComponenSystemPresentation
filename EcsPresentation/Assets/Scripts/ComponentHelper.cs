@@ -21,7 +21,7 @@ public static class ComponentHelper
             var entry = entitiesWithAPositionComponent[i];
             var movement = entry.GetComponent<T>();
             var position = entry.GetComponent<T1>();
-            entities.Add(1, new Tuple<T, T1>(movement, position));
+            entities.Add(i, new Tuple<T, T1>(movement, position));
         }
 
         return entities;
