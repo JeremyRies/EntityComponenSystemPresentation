@@ -6,24 +6,48 @@ using Object = UnityEngine.Object;
 
 public static class ComponentHelper
 {
-    public static Dictionary<int, Tuple<T,T1>> GetMatchingEntities<T,T1>() where T : Component where T1 : Component
+    public static Dictionary<int, Tuple<T,T1>> FindObjectsWithComponents<T,T1>() where T : Component where T1 : Component
     { 
         var entities = new Dictionary<int, Tuple<T, T1>>();
-        T[] entitiesWithAMovementSpeedComponent = Object.FindObjectsOfType<T>();
-        T1[] entitiesWithAPositionComponent = Object.FindObjectsOfType<T1>();
+        T[] entitiesWithTComponent = Object.FindObjectsOfType<T>();
+        T1[] entitiesWithT1Component = Object.FindObjectsOfType<T1>();
 
-        var entitiesWithBothComponents = entitiesWithAMovementSpeedComponent.Select(ent => ent.gameObject)
-            .Intersect(entitiesWithAPositionComponent.Select(ent => ent.gameObject)).ToList();
+        var entitiesWithBothComponents = entitiesWithTComponent.Select(ent => ent.gameObject)
+            .Intersect(entitiesWithT1Component.Select(ent => ent.gameObject)).ToList();
 
-
-        for (int i = 0; i < entitiesWithBothComponents.Count; i++)
+        foreach (var entry in entitiesWithBothComponents)
         {
-            var entry = entitiesWithAPositionComponent[i];
-            var movement = entry.GetComponent<T>();
-            var position = entry.GetComponent<T1>();
-            entities.Add(1, new Tuple<T, T1>(movement, position));
+            var t = entry.GetComponent<T>();
+            var t1 = entry.GetComponent<T1>();
+            entities.Add(1, new Tuple<T, T1>(t, t1));
         }
 
         return entities;
+    }
+
+    public static List<GameObject> FindObjectsWithComponents(List<Component> filter)
+    {
+        var entities = new Dictionary<int, List<Component>>();
+
+        var candidates = filter.Select(comp => Object.FindObjectsOfType(comp.GetType())).Select(o => o.Cast<Component>());
+        var objectsThatMatchFilter = candidates.Select(cand => cand.Select(comp => comp.gameObject)).IntersectAll();
+        
+        return objectsThatMatchFilter;
+    }
+    public static List<T> IntersectAll<T>(this IEnumerable<IEnumerable<T>> lists)
+    {
+        HashSet<T> hashSet = null;
+        foreach (var list in lists)
+        {
+            if (hashSet == null)
+            {
+                hashSet = new HashSet<T>(list);
+            }
+            else
+            {
+                hashSet.IntersectWith(list);
+            }
+        }
+        return hashSet == null ? new List<T>() : hashSet.ToList();
     }
 }

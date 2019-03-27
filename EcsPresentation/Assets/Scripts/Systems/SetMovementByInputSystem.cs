@@ -18,7 +18,7 @@ namespace Systems
 
         private void Update()
         {
-            var entities = ComponentHelper.GetMatchingEntities<InputComponent, MovementComponent>();
+            var entities = ComponentHelper.FindObjectsWithComponents<InputComponent, MovementComponent>();
 
             ExecuteForAll(entities);
         }
