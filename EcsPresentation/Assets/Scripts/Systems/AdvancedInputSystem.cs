@@ -18,7 +18,7 @@ namespace Systems
 
         private void Update()
         {
-            var entities = ComponentHelper.GetMatchingEntities<InputComponent,IdComponent>();
+            var entities = ComponentHelper.FindObjectsWithComponents<InputComponent,IdComponent>();
 
             ExecuteForAll(entities);
         }

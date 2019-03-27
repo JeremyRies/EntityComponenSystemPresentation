@@ -40,11 +40,11 @@ namespace Systems
             spriteRenderer.color = Random.ColorHSV();
             
             var pos = player.AddComponent<PositionComponent>();
-            pos.Position = Random.insideUnitCircle * 5;
+            pos.Position = Random.insideUnitCircle * 2;
             
             player.AddComponent<InputComponent>();
             var movement = player.AddComponent<MovementComponent>();
-            movement.Speed = Random.Range(1, 5);
+            movement.Speed = Random.Range(2, 4);
         }
     }
 }

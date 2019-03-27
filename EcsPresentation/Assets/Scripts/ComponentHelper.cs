@@ -15,11 +15,12 @@ public static class ComponentHelper
         var entitiesWithBothComponents = entitiesWithTComponent.Select(ent => ent.gameObject)
             .Intersect(entitiesWithT1Component.Select(ent => ent.gameObject)).ToList();
 
-        foreach (var entry in entitiesWithBothComponents)
+        for (var index = 0; index < entitiesWithBothComponents.Count; index++)
         {
+            var entry = entitiesWithBothComponents[index];
             var t = entry.GetComponent<T>();
             var t1 = entry.GetComponent<T1>();
-            entities.Add(1, new Tuple<T, T1>(t, t1));
+            entities.Add(index, new Tuple<T, T1>(t, t1));
         }
 
         return entities;
